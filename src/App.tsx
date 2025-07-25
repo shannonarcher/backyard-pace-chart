@@ -1,4 +1,3 @@
-import { useState, useMemo } from "react";
 import "./App.css";
 
 import PaceCalculator from "./PaceCalculator";
