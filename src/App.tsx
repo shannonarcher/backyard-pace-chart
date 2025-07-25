@@ -7,7 +7,7 @@ function App() {
   const distanceMiles = 4.16667;
 
   return (
-    <div className="card">
+    <div>
       <PaceCalculator distanceMiles={distanceMiles} />
       <PaceChart distanceMiles={distanceMiles} />
     </div>

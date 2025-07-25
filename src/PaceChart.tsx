@@ -22,7 +22,7 @@ export default function PaceChart({
         time: i === 19 ? `59:59` : `${minutes}:00`,
         pace: `${paceMinutes}:${paceSeconds.toString().padStart(2, "0")}`,
       };
-    });
+    }).reverse();
   }, [distanceMiles]);
 
   // Split data into two chunks for side-by-side display on wider viewports
@@ -30,52 +30,26 @@ export default function PaceChart({
   const secondHalf = paceChartData.slice(10);
 
   return (
-    <div style={{ marginTop: "20px" }}>
-      <h2>Pace Chart (40:00 - 59:59 for {distanceMiles} miles)</h2>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          gap: "20px",
-          justifyContent: "space-around",
-        }}
-      >
+    <div className="mt-5">
+      <h2 className="text-lg font-semibold mb-2">
+        Pace Chart (40:00 - 59:59 for {distanceMiles} miles)
+      </h2>
+      <div className="flex flex-col md:flex-row gap-5 justify-around">
         {/* First Table */}
-        <table
-          style={{
-            width: "100%",
-            maxWidth: "300px",
-            borderCollapse: "collapse",
-            marginBottom: "20px",
-          }}
-        >
+        <table className="w-full md:w-1/2 max-w-xs border-collapse mb-5">
           <thead>
             <tr>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Time</th>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>
-                Pace per Mile
-              </th>
+              <th className="border border-gray-300 p-2">Time</th>
+              <th className="border border-gray-300 p-2">Pace per Mile</th>
             </tr>
           </thead>
           <tbody>
             {firstHalf.map((entry, index) => (
               <tr key={index}>
-                <td
-                  style={{
-                    border: "1px solid #ddd",
-                    padding: "8px",
-                    textAlign: "center",
-                  }}
-                >
+                <td className="border border-gray-300 p-2 text-center">
                   {entry.time}
                 </td>
-                <td
-                  style={{
-                    border: "1px solid #ddd",
-                    padding: "8px",
-                    textAlign: "center",
-                  }}
-                >
+                <td className="border border-gray-300 p-2 text-center">
                   {entry.pace}
                 </td>
               </tr>
@@ -84,41 +58,20 @@ export default function PaceChart({
         </table>
 
         {/* Second Table */}
-        <table
-          style={{
-            width: "100%",
-            maxWidth: "300px",
-            borderCollapse: "collapse",
-            marginBottom: "20px",
-          }}
-        >
+        <table className="w-full md:w-1/2 max-w-xs border-collapse mb-5">
           <thead>
             <tr>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Time</th>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>
-                Pace per Mile
-              </th>
+              <th className="border border-gray-300 p-2">Time</th>
+              <th className="border border-gray-300 p-2">Pace per Mile</th>
             </tr>
           </thead>
           <tbody>
             {secondHalf.map((entry, index) => (
               <tr key={index}>
-                <td
-                  style={{
-                    border: "1px solid #ddd",
-                    padding: "8px",
-                    textAlign: "center",
-                  }}
-                >
+                <td className="border border-gray-300 p-2 text-center">
                   {entry.time}
                 </td>
-                <td
-                  style={{
-                    border: "1px solid #ddd",
-                    padding: "8px",
-                    textAlign: "center",
-                  }}
-                >
+                <td className="border border-gray-300 p-2 text-center">
                   {entry.pace}
                 </td>
               </tr>

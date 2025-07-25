@@ -36,59 +36,38 @@ export default function PaceCalculator({
   const pacePerKmRemainingSeconds = Math.round(pacePerKmSeconds % 60);
 
   return (
-    <div style={{ marginTop: "20px", maxWidth: "100%", padding: "0 10px" }}>
-      <h2 style={{ fontSize: "1.5rem", textAlign: "center" }}>
+    <div className="mt-5 max-w-full px-2.5">
+      <h2 className="text-2xl text-center">
         Pace Calculator (for {distanceMiles} miles)
       </h2>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "10px",
-          alignItems: "center",
-        }}
-      >
-        <div style={{ width: "100%", maxWidth: "300px" }}>
-          <label style={{ display: "block", marginBottom: "5px" }}>
-            Time (Minutes):
-          </label>
+      <div className="flex flex-col gap-2.5 items-center">
+        <div className="w-full max-w-xs">
+          <label className="block mb-1.5">Time (Minutes):</label>
           <input
             type="number"
             min="0"
             value={timeMinutes}
             onChange={(e) => setTimeMinutes(e.target.value)}
-            style={{
-              width: "100%",
-              padding: "8px",
-              fontSize: "1rem",
-              boxSizing: "border-box",
-            }}
+            className="w-full p-2 text-base box-border border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
         </div>
-        <div style={{ width: "100%", maxWidth: "300px" }}>
-          <label style={{ display: "block", marginBottom: "5px" }}>
-            Seconds:
-          </label>
+        <div className="w-full max-w-xs">
+          <label className="block mb-1.5">Seconds:</label>
           <input
             type="number"
             min="0"
             max="59"
             value={timeSeconds}
             onChange={(e) => setTimeSeconds(e.target.value)}
-            style={{
-              width: "100%",
-              padding: "8px",
-              fontSize: "1rem",
-              boxSizing: "border-box",
-            }}
+            className="w-full p-2 text-base box-border border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
         </div>
       </div>
-      <p style={{ marginTop: "15px", textAlign: "center", fontSize: "1rem" }}>
+      <p className="mt-4 text-center text-base">
         Pace per Mile: {pacePerMileMinutes}:
         {pacePerMileRemainingSeconds.toString().padStart(2, "0")} min/mile
       </p>
-      <p style={{ textAlign: "center", fontSize: "1rem" }}>
+      <p className="text-center text-base">
         Pace per Kilometer: {pacePerKmMinutes}:
         {pacePerKmRemainingSeconds.toString().padStart(2, "0")} min/km
       </p>
