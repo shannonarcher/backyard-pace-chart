@@ -8,18 +8,23 @@ export default function PaceChart({
 }) {
   // Generate pace chart data from 40:00 to 59:59 using useMemo for memoization
   const paceChartData = useMemo(() => {
-    return Array.from({ length: 20 }, (_, i) => {
-      const minutes = 40 + i;
+    return Array.from({ length: 21 }, (_, i) => {
+      let minutes = 40 + i;
+      if (i === 20) {
+        minutes = 59;
+      }
+
       let totalSeconds = minutes * 60;
-      // Adjust the last entry (index 19) to include seconds for 59:59
-      if (i === 19) {
+      // Adjust the last entry (index 20) to include seconds for 59:59
+      if (i === 20) {
         totalSeconds += 59;
       }
+
       const paceSecondsPerMile = totalSeconds / distanceMiles;
       const paceMinutes = Math.floor(paceSecondsPerMile / 60);
       const paceSeconds = Math.round(paceSecondsPerMile % 60);
       return {
-        time: i === 19 ? `59:59` : `${minutes}:00`,
+        time: i === 20 ? `59:59` : `${minutes}:00`,
         pace: `${paceMinutes}:${paceSeconds.toString().padStart(2, "0")}`,
       };
     }).reverse();
